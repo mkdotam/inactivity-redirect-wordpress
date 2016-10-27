@@ -5,8 +5,8 @@
  */
 /*
 Plugin Name: MK Inactivity Redirect
-Plugin URI: http://mk.am/
-Description: This plugin redirects user to the specified page after give period of inactivity
+Plugin URI: https://github.com/mkdotam/inactivity-redirect-wordpress
+Description: This plugin redirects user to the specified page after given period of inactivity (in seconds)
 Author: Mikayel Ghazaryan
 Version: 1.0
 Author URI: http://mk.am/

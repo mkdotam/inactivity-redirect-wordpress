@@ -3,14 +3,12 @@ var mk_inactivity_timer = {
     counter: 0,
     redirect_url: "/main/",
     tick: function() {
-        if (window.location.pathname != this.redirect_url && window.location.pathname.indexOf('wp-admin') == -1) {
-            if (this.counter <= 0) {
-                //console.log(this.redirect_url);
-                this.counter = this.timeout;
-                window.location.pathname = this.redirect_url;
-            } else {
-                --this.counter;
-            }
+        if (this.counter <= 0) {
+            //console.log(this.redirect_url);
+            this.counter = this.timeout;
+            window.location.pathname = this.redirect_url;
+        } else {
+            --this.counter;
         }
         //console.log(this.counter);
     },
@@ -38,16 +36,18 @@ var mk_inactivity_timer = {
         });
     },
     start: function() {
-	var redirect_url= arguments[0];
-	var timeout = arguments[1];
-        var self = this;
-	if (redirect_url) { self.redirect_url = redirect_url }
-	if (timeout ) { self.timeout = timeout }
-        self.reset_counter('start');
-        self.listen_events();
-        window.setInterval(function() {
-            self.tick();
-        }, 1000)
+        var redirect_url= arguments[0];
+        if (window.location.pathname != redirect_url && window.location.pathname.indexOf('wp-admin') == -1) {
+            var timeout = arguments[1];
+            var self = this;
+            if (redirect_url) { self.redirect_url = redirect_url }
+            if (timeout ) { self.timeout = timeout }
+            self.reset_counter('start');
+            self.listen_events();
+            window.setInterval(function() {
+                    self.tick();
+            }, 1000);
+        }
     },
 };
 

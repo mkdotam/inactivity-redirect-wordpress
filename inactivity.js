@@ -5,19 +5,19 @@ var mk_inactivity_timer = {
     tick: function() {
         if (window.location.pathname != this.redirect_url && window.location.pathname.indexOf('wp-admin') == -1) {
             if (this.counter <= 0) {
-                # console.log(this.redirect_url);
+                //console.log(this.redirect_url);
                 this.counter = this.timeout;
                 window.location.pathname = this.redirect_url;
             } else {
                 --this.counter;
             }
         }
-        # console.log(this.counter);
+        //console.log(this.counter);
     },
     reset_counter: function(type) {
-        # console.log('counter reset via ' + type);
+        //console.log('counter reset via ' + type);
         this.counter = this.timeout;
-        # console.log(this.counter)
+        //console.log(this.counter)
     },
     listen_events: function() {
         var self = this;
